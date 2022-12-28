@@ -1,0 +1,10 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+	-DSPM_BUILD_LIBRARY_ONLY=ON \
+	-DSPM_USE_BUILTIN_PROTOBUF=OFF \
+	-DSPM_ENABLE_SHARED=ON

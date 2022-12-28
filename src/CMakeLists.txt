@@ -183,11 +183,37 @@ endif()
 
 if (SPM_ENABLE_SHARED)
   add_library(sentencepiece SHARED ${SPM_SRCS})
+  set_target_properties(sentencepiece PROPERTIES
+          OUTPUT_NAME sentencepiece-browsermt
+          CXX_STANDARD 17
+          VERSION "${CMAKE_PROJECT_VERSION_MAJOR}.${CMAKE_PROJECT_VERSION_MINOR}.${CMAKE_PROJECT_VERSION_PATCH}"
+          SOVERSION "${CMAKE_PROJECT_VERSION_MAJOR}"
+          )
+
   add_library(sentencepiece_train SHARED ${SPM_TRAIN_SRCS})
+  set_target_properties(sentencepiece_train PROPERTIES
+          OUTPUT_NAME sentencepiece_train-browsermt
+          CXX_STANDARD 17
+          VERSION "${CMAKE_PROJECT_VERSION_MAJOR}.${CMAKE_PROJECT_VERSION_MINOR}.${CMAKE_PROJECT_VERSION_PATCH}"
+          SOVERSION "${CMAKE_PROJECT_VERSION_MAJOR}"
+          )
 endif()
 
 add_library(sentencepiece-static STATIC ${SPM_SRCS})
+set_target_properties(sentencepiece-static PROPERTIES
+        OUTPUT_NAME sentencepiece-browsermt
+        CXX_STANDARD 17
+        VERSION "${CMAKE_PROJECT_VERSION_MAJOR}.${CMAKE_PROJECT_VERSION_MINOR}.${CMAKE_PROJECT_VERSION_PATCH}"
+        SOVERSION "${CMAKE_PROJECT_VERSION_MAJOR}"
+        )
+
 add_library(sentencepiece_train-static STATIC ${SPM_TRAIN_SRCS})
+set_target_properties(sentencepiece_train-static PROPERTIES
+        OUTPUT_NAME sentencepiece_train-browsermt
+        CXX_STANDARD 17
+        VERSION "${CMAKE_PROJECT_VERSION_MAJOR}.${CMAKE_PROJECT_VERSION_MINOR}.${CMAKE_PROJECT_VERSION_PATCH}"
+        SOVERSION "${CMAKE_PROJECT_VERSION_MAJOR}"
+        )
 
 target_link_libraries(sentencepiece-static INTERFACE ${SPM_LIBS})
 target_link_libraries(sentencepiece_train-static INTERFACE sentencepiece-static ${SPM_LIBS})
@@ -203,7 +229,6 @@ if (SPM_ENABLE_SHARED)
     list(APPEND SPM_LIBS "atomic")
   endif()
   set(SPM_INSTALLTARGETS sentencepiece sentencepiece_train sentencepiece-static sentencepiece_train-static)
-  set_target_properties(sentencepiece sentencepiece_train PROPERTIES SOVERSION 0 VERSION 0.0.0)
   set_target_properties(sentencepiece PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS YES)
   set_target_properties(sentencepiece_train PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS YES)
   if (MSVC)
@@ -218,9 +243,6 @@ else()
   add_library(sentencepiece_train ALIAS sentencepiece_train-static)
   set(SPM_INSTALLTARGETS sentencepiece-static sentencepiece_train-static)
 endif()
-
-set_target_properties(sentencepiece-static PROPERTIES OUTPUT_NAME "sentencepiece")
-set_target_properties(sentencepiece_train-static PROPERTIES OUTPUT_NAME "sentencepiece_train")
 
 if (NOT MSVC)
   if (SPM_COVERAGE)
@@ -275,7 +297,7 @@ install(TARGETS ${SPM_INSTALLTARGETS}
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(FILES sentencepiece_trainer.h sentencepiece_processor.h
-  DESTINATION ${CMAKE_INSTALL_INCDIR})
+  DESTINATION ${CMAKE_INSTALL_INCDIR}/sentencepiece-browsermt/)
 
 file(TO_NATIVE_PATH "${PROJECT_SOURCE_DIR}/data" data_dir)
 

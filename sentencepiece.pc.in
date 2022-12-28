@@ -1,10 +1,11 @@
 prefix=@prefix@
 exec_prefix=@exec_prefix@
 libdir=@libdir@
-includedir=@includedir@
+includedir=@includedir@/sentencepiece-browsermt
 
 Name: @PROJECT_NAME@
-Description: Unsupervised text tokenizer and detokenizer for Neural Network-based text generation.
+Description: @CMAKE_PROJECT_DESCRIPTION@
+URL: @CMAKE_PROJECT_HOMEPAGE_URL@
 Version: @PROJECT_VERSION@
-Libs: -L${libdir} -lsentencepiece -lsentencepiece_train @libprotobuf_lite@ @pkgconfiglibs@
+Libs: -L${libdir} -lsentencepiece-browsermt -lsentencepiece_train-browsermt @libprotobuf_lite@ @pkgconfiglibs@
 Cflags: -I${includedir} @pkgconfigcflags@

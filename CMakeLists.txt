@@ -15,7 +15,11 @@
 cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
 file(STRINGS "VERSION.txt" SPM_VERSION)
 message(STATUS "VERSION: ${SPM_VERSION}")
-project(sentencepiece VERSION ${SPM_VERSION} LANGUAGES C CXX)
+project(sentencepiece
+        VERSION 0.1.94
+        DESCRIPTION "Unsupervised text tokenizer and detokenizer for Neural Network-based text generation. Browsermt version."
+        HOMEPAGE_URL https://github.com/kroketio/sentencepiece-browsermt
+        LANGUAGES C CXX)
 
 option(SPM_ENABLE_NFKC_COMPILE "Enables NFKC compile" OFF)
 option(SPM_ENABLE_SHARED "Builds shared libaries in addition to static libraries." ON)
@@ -85,10 +89,10 @@ if (NOT DEFINED CMAKE_INSTALL_INCDIR)
 endif()
 
 configure_file("${PROJECT_SOURCE_DIR}/config.h.in" "config.h")
-configure_file("${PROJECT_SOURCE_DIR}/sentencepiece.pc.in" "sentencepiece.pc" @ONLY)
+configure_file("${PROJECT_SOURCE_DIR}/sentencepiece.pc.in" "sentencepiece-browsermt.pc" @ONLY)
 
 if (NOT MSVC)
-  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/sentencepiece.pc" DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/sentencepiece-browsermt.pc" DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 endif()
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${PROJECT_BINARY_DIR})
