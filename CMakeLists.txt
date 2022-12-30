@@ -12,9 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.!
 
-cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
-file(STRINGS "VERSION.txt" SPM_VERSION)
-message(STATUS "VERSION: ${SPM_VERSION}")
+cmake_minimum_required(VERSION 3.16)
 project(sentencepiece
         VERSION 0.1.94
         DESCRIPTION "Unsupervised text tokenizer and detokenizer for Neural Network-based text generation. Browsermt version."
@@ -22,7 +20,6 @@ project(sentencepiece
         LANGUAGES C CXX)
 
 option(SPM_ENABLE_NFKC_COMPILE "Enables NFKC compile" OFF)
-option(SPM_ENABLE_SHARED "Builds shared libaries in addition to static libraries." ON)
 option(SPM_BUILD_TEST "Builds test binaries." OFF)
 option(SPM_COVERAGE "Runs gcov to test coverage." OFF)
 option(SPM_ENABLE_TENSORFLOW_SHARED "Makes a tensorflow compatible shared file." OFF)
@@ -33,7 +30,11 @@ option(SPM_USE_BUILTIN_PROTOBUF "Use built-in protobuf" ON)
 
 option(SPM_BUILD_LIBRARY_ONLY "Build library only (skip building executables)" OFF)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+include(GNUInstallDirs)  # initializes ${CMAKE_INSTALL_*DIR} to sane defaults
+include(CMakePackageConfigHelpers)
+
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 if (UNIX)
@@ -106,7 +107,7 @@ add_subdirectory(third_party)
 
 set(CPACK_SOURCE_GENERATOR "TXZ")
 set(CPACK_GENERATOR "7Z")
-set(CPACK_PACKAGE_VERSION "${SPM_VERSION}")
+set(CPACK_PACKAGE_VERSION "${CMAKE_PROJECT_VERSION}")
 set(CPACK_STRIP_FILES TRUE)
 set(CPACK_RESOURCE_FILE_LICENSE "${PROJECT_SOURCE_DIR}/LICENSE")
 set(CPACK_RESOURCE_FILE_README "${PROJECT_SOURCE_DIR}/README.md")
