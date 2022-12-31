@@ -20,7 +20,7 @@
 #include "filesystem.h"
 #include "init.h"
 #include "sentencepiece.pb.h"
-#include "sentencepiece_processor.h"
+#include <sentencepiece-browsermt/sentencepiece_processor.h>
 #include "third_party/absl/flags/flag.h"
 #include "third_party/absl/strings/str_split.h"
 #include "util.h"

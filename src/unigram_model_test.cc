@@ -18,7 +18,7 @@
 #include <vector>
 
 #include "sentencepiece_model.pb.h"
-#include "sentencepiece_processor.h"
+#include <sentencepiece-browsermt/sentencepiece_processor.h>
 #include "testharness.h"
 #include "third_party/absl/strings/str_cat.h"
 #include "third_party/absl/strings/str_join.h"

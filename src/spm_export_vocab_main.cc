@@ -19,7 +19,7 @@
 #include "filesystem.h"
 #include "init.h"
 #include "sentencepiece_model.pb.h"
-#include "sentencepiece_processor.h"
+#include <sentencepiece-browsermt/sentencepiece_processor.h>
 #include "third_party/absl/flags/flag.h"
 
 ABSL_FLAG(std::string, output, "", "Output filename");

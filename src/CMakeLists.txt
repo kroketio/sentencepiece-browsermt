@@ -71,13 +71,13 @@ target_link_libraries(sentencepiece_train-browsermt PRIVATE ${PROTOBUF_LITE_LIBR
 #==========
 
 target_include_directories(sentencepiece-browsermt
-        PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
         PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
         )
 
 target_include_directories(sentencepiece_train-browsermt
-        PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
         PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
         )
@@ -90,7 +90,9 @@ install(TARGETS sentencepiece-browsermt sentencepiece_train-browsermt
         INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
         )
 
-install(FILES sentencepiece_trainer.h sentencepiece_processor.h
+install(FILES
+          include/sentencepiece-browsermt/sentencepiece_trainer.h
+          include/sentencepiece-browsermt/sentencepiece_processor.h
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/sentencepiece-browsermt/)
 
 

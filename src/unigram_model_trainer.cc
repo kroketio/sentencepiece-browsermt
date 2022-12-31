@@ -24,7 +24,7 @@
 
 #include "normalizer.h"
 #include "pretokenizer_for_training.h"
-#include "sentencepiece_trainer.h"
+#include <sentencepiece-browsermt/sentencepiece_trainer.h>
 #include "third_party/absl/container/flat_hash_map.h"
 #include "third_party/absl/memory/memory.h"
 #include "third_party/esaxx/esa.hxx"  // Suffix array library.

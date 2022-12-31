@@ -20,8 +20,8 @@
 #include "normalizer.h"
 #include "sentencepiece.pb.h"
 #include "sentencepiece_model.pb.h"
-#include "sentencepiece_processor.h"
-#include "sentencepiece_trainer.h"
+#include <sentencepiece-browsermt/sentencepiece_processor.h>
+#include <sentencepiece-browsermt/sentencepiece_trainer.h>
 #include "testharness.h"
 #include "third_party/absl/container/flat_hash_map.h"
 #include "third_party/absl/memory/memory.h"

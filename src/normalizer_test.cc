@@ -17,7 +17,7 @@
 #include <vector>
 
 #include "builder.h"
-#include "sentencepiece_trainer.h"
+#include <sentencepiece-browsermt/sentencepiece_trainer.h>
 #include "testharness.h"
 #include "util.h"
 

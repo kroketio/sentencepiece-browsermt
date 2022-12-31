@@ -19,8 +19,8 @@
 #include "normalizer.h"
 #include "sentencepiece.pb.h"
 #include "sentencepiece_model.pb.h"
-#include "sentencepiece_processor.h"
-#include "sentencepiece_trainer.h"
+#include <sentencepiece-browsermt/sentencepiece_processor.h>
+#include <sentencepiece-browsermt/sentencepiece_trainer.h>
 #include "third_party/absl/flags/flag.h"
 
 ABSL_FLAG(std::string, model, "", "Model file name");

@@ -14,7 +14,7 @@
 
 #include "filesystem.h"
 #include "sentencepiece_model.pb.h"
-#include "sentencepiece_trainer.h"
+#include <sentencepiece-browsermt/sentencepiece_trainer.h>
 #include "testharness.h"
 #include "third_party/absl/strings/str_cat.h"
 #include "util.h"
