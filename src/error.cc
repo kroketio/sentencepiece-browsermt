@@ -14,7 +14,7 @@
 
 #include <cstring>
 #include "common.h"
-#include "sentencepiece_processor.h"
+#include <sentencepiece-browsermt/sentencepiece_processor.h>
 
 namespace sentencepiece {
 namespace error {

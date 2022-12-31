@@ -21,7 +21,7 @@
 #include "builder.h"
 #include "filesystem.h"
 #include "init.h"
-#include "sentencepiece_processor.h"
+#include <sentencepiece-browsermt/sentencepiece_processor.h>
 #include "third_party/absl/flags/flag.h"
 #include "third_party/absl/strings/string_view.h"
 

@@ -12,36 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.!
 
-set(HDRS
-        bpe_model.h
-        common.h
-        normalizer.h
-        util.h
-        freelist.h
-        filesystem.h
-        init.h
-        sentencepiece_processor.h
-        word_model.h
-        model_factory.h
-        char_model.h
-        model_interface.h
-        testharness.h
-        unigram_model.h)
-
-set(TRAIN_HDRS
-        builder.h
-        normalization_rule.h
-        unicode_script.h
-        unicode_script_map.h
-        trainer_factory.h
-        trainer_interface.h
-        unigram_model_trainer.h
-        word_model_trainer.h
-        char_model_trainer.h
-        bpe_model_trainer.h
-        sentencepiece_trainer.h
-        pretokenizer_for_training.h)
-
 set(SRCS
         bpe_model.cc
         char_model.cc
@@ -76,13 +46,10 @@ find_package(Protobuf REQUIRED)
 protobuf_generate_cpp(SPM_PROTO_SRCS SPM_PROTO_HDRS sentencepiece.proto)
 protobuf_generate_cpp(SPM_MODEL_PROTO_SRCS SPM_MODEL_PROTO_HDRS sentencepiece_model.proto)
 
-# add protobuf files to headers/sources
-list(APPEND HDRS ${SPM_PROTO_HDRS} ${SPM_MODEL_PROTO_HDRS})
 list(APPEND SRCS ${SPM_MODEL_PROTO_SRCS} ${SPM_PROTO_SRCS})
-list(APPEND ${TRAIN_SRCS} ${SPM_PROTO_HDRS} ${SPM_MODEL_PROTO_HDRS})
 
-add_library(sentencepiece-browsermt STATIC ${HDRS} ${SRCS})
-add_library(sentencepiece_train-browsermt STATIC ${TRAIN_HDRS} ${TRAIN_SRCS})
+add_library(sentencepiece-browsermt STATIC ${SRCS})
+add_library(sentencepiece_train-browsermt STATIC ${TRAIN_SRCS})
 
 target_compile_definitions(sentencepiece-browsermt PRIVATE _USE_INTERNAL_STRING_VIEW=1)
 target_compile_definitions(sentencepiece_train-browsermt PRIVATE _USE_INTERNAL_STRING_VIEW=1)
@@ -104,13 +71,13 @@ target_link_libraries(sentencepiece_train-browsermt PRIVATE ${PROTOBUF_LITE_LIBR
 #==========
 
 target_include_directories(sentencepiece-browsermt
-        PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
         PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
         )
 
 target_include_directories(sentencepiece_train-browsermt
-        PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
         PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
         )
@@ -123,7 +90,9 @@ install(TARGETS sentencepiece-browsermt sentencepiece_train-browsermt
         INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
         )
 
-install(FILES sentencepiece_trainer.h sentencepiece_processor.h
+install(FILES
+          include/sentencepiece-browsermt/sentencepiece_trainer.h
+          include/sentencepiece-browsermt/sentencepiece_processor.h
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/sentencepiece-browsermt/)
 
 

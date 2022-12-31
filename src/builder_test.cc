@@ -16,7 +16,7 @@
 #include "common.h"
 #include "filesystem.h"
 #include "normalizer.h"
-#include "sentencepiece_trainer.h"
+#include <sentencepiece-browsermt/sentencepiece_trainer.h>
 #include "testharness.h"
 #include "third_party/absl/strings/str_cat.h"
 #include "util.h"

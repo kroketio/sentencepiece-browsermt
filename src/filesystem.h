@@ -22,7 +22,7 @@
 #include <string>
 
 #include "common.h"
-#include "sentencepiece_processor.h"
+#include <sentencepiece-browsermt/sentencepiece_processor.h>
 #include "third_party/absl/strings/string_view.h"
 
 namespace sentencepiece {

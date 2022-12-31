@@ -17,8 +17,8 @@
 
 #include "bpe_model_trainer.h"
 #include "filesystem.h"
-#include "sentencepiece_processor.h"
-#include "sentencepiece_trainer.h"
+#include <sentencepiece-browsermt/sentencepiece_processor.h>
+#include <sentencepiece-browsermt/sentencepiece_trainer.h>
 #include "testharness.h"
 #include "third_party/absl/strings/str_cat.h"
 #include "third_party/absl/strings/str_join.h"
