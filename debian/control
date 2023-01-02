@@ -4,7 +4,7 @@ Priority: extra
 Maintainer: Sander <code@kroket.io>
 Build-Depends: debhelper (>= 10),
     cmake,
-    libprotobuf-lite23,
+    libprotobuf-dev,
     protobuf-compiler,
 Homepage: https://github.com/maemo-leste-extras/sentencepiece-browsermt
 XSBC-Bugtracker: https://github.com/maemo-leste-extras/sentencepiece-browsermt/issues
@@ -15,5 +15,5 @@ Vcs-Browser: https://github.com/maemo-leste-extras/sentencepiece-browsermt
 Package: libsentencepiece-browsermt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
-    libprotobuf-lite23,
+    libprotobuf-dev,
 Description: Unsupervised text tokenizer for Neural Network-based text generation. Browsermt version, forked at (original) sentencepiece version 0.1.94.
