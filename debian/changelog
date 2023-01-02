@@ -1,3 +1,9 @@
+libsentencepiece-browsermt (0.1.96) unstable; urgency=medium
+
+  * Replace some relative includes for absolute paths prefixed by the project name.
+
+ -- Sander <code@kroket.io>  Fri, 2 Jan 2023 20:34:36 +0100
+
 libsentencepiece-browsermt (0.1.95) unstable; urgency=medium
 
   * Default CMake build type to Release.
