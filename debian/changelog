@@ -1,3 +1,9 @@
+libsentencepiece-browsermt (0.1.98) unstable; urgency=medium
+
+  * debian/rules: Do not use built-in protobuf
+
+ -- Sander <code@kroket.io>  Mon, 2 Jan 2023 20:35:36 +0100
+
 libsentencepiece-browsermt (0.1.97) unstable; urgency=medium
 
   * debian/control: Fetch libprotobuf-dev instead

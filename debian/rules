@@ -6,4 +6,5 @@
 override_dh_auto_configure:
 	dh_auto_configure -- \
 	-DCMAKE_BUILD_TYPE=Release \
+        -DSPM_USE_BUILTIN_PROTOBUF=OFF \
 	-DSPM_BUILD_LIBRARY_ONLY=ON
