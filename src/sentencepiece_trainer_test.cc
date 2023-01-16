@@ -13,7 +13,7 @@
 // limitations under the License.!
 
 #include "filesystem.h"
-#include "sentencepiece_model.pb.h"
+#include "proto/sentencepiece_model.pb.h"
 #include <sentencepiece-browsermt/sentencepiece_trainer.h>
 #include "testharness.h"
 #include "third_party/absl/strings/str_cat.h"

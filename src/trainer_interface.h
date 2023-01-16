@@ -24,7 +24,7 @@
 
 #include "common.h"
 #include "filesystem.h"
-#include "sentencepiece_model.pb.h"
+#include "proto/sentencepiece_model.pb.h"
 #include <sentencepiece-browsermt/sentencepiece_processor.h>
 #include <sentencepiece-browsermt/sentencepiece_trainer.h>
 #include "third_party/absl/container/flat_hash_map.h"

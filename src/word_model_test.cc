@@ -14,7 +14,7 @@
 
 #include <string>
 
-#include "sentencepiece_model.pb.h"
+#include "proto/sentencepiece_model.pb.h"
 #include "testharness.h"
 #include "util.h"
 #include "word_model.h"

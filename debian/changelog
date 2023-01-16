@@ -1,3 +1,9 @@
+libsentencepiece-browsermt (0.1.99) unstable; urgency=medium
+
+  * protobuf models as OBJECT, link to library, distribute as CMake target, install proto headers
+
+ -- Sander <code@kroket.io>  Mon, 16 Jan 2023 20:35:36 +0100
+
 libsentencepiece-browsermt (0.1.98) unstable; urgency=medium
 
   * debian/rules: Do not use built-in protobuf

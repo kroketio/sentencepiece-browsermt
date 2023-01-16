@@ -23,7 +23,7 @@
 #include "model_factory.h"
 #include "model_interface.h"
 #include "normalizer.h"
-#include "sentencepiece.pb.h"
+#include "proto/sentencepiece.pb.h"
 #include "third_party/absl/memory/memory.h"
 #include "third_party/absl/strings/numbers.h"
 #include "third_party/absl/strings/str_cat.h"

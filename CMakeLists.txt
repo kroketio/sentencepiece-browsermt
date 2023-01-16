@@ -108,6 +108,8 @@ if (SPM_BUILD_TEST)
   enable_testing()
 endif()
 
+find_package(Protobuf REQUIRED)
+
 add_subdirectory(src)
 add_subdirectory(third_party)
 

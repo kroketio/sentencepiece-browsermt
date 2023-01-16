@@ -15,7 +15,7 @@
 #include <algorithm>
 
 #include "model_interface.h"
-#include "sentencepiece_model.pb.h"
+#include "proto/sentencepiece_model.pb.h"
 #include "third_party/absl/memory/memory.h"
 #include "third_party/absl/strings/str_format.h"
 #include "util.h"

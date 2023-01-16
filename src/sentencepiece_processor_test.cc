@@ -18,8 +18,8 @@
 #include "filesystem.h"
 #include "model_interface.h"
 #include "normalizer.h"
-#include "sentencepiece.pb.h"
-#include "sentencepiece_model.pb.h"
+#include "proto/sentencepiece.pb.h"
+#include "proto/sentencepiece_model.pb.h"
 #include <sentencepiece-browsermt/sentencepiece_processor.h>
 #include <sentencepiece-browsermt/sentencepiece_trainer.h>
 #include "testharness.h"

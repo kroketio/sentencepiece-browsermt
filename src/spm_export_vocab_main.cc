@@ -18,7 +18,7 @@
 #include "common.h"
 #include "filesystem.h"
 #include "init.h"
-#include "sentencepiece_model.pb.h"
+#include "proto/sentencepiece_model.pb.h"
 #include <sentencepiece-browsermt/sentencepiece_processor.h>
 #include "third_party/absl/flags/flag.h"
 

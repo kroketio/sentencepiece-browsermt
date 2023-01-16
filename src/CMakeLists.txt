@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.!
 
+add_subdirectory(proto)
+
 set(SRCS
         bpe_model.cc
         char_model.cc
@@ -43,10 +45,7 @@ set(TRAIN_SRCS
 find_package(Threads REQUIRED)
 find_package(Protobuf REQUIRED)
 
-protobuf_generate_cpp(SPM_PROTO_SRCS SPM_PROTO_HDRS sentencepiece.proto)
-protobuf_generate_cpp(SPM_MODEL_PROTO_SRCS SPM_MODEL_PROTO_HDRS sentencepiece_model.proto)
-
-list(APPEND SRCS ${SPM_MODEL_PROTO_SRCS} ${SPM_PROTO_SRCS})
+#list(APPEND SRCS ${SPM_MODEL_PROTO_SRCS} ${SPM_PROTO_SRCS})
 
 add_library(sentencepiece-browsermt STATIC ${SRCS})
 add_library(sentencepiece_train-browsermt STATIC ${TRAIN_SRCS})
@@ -65,8 +64,10 @@ set_target_properties(sentencepiece_train-browsermt PROPERTIES
         SOVERSION "${CMAKE_PROJECT_VERSION_MAJOR}"
         )
 
-target_link_libraries(sentencepiece-browsermt PRIVATE ${PROTOBUF_LITE_LIBRARY} Threads::Threads)
-target_link_libraries(sentencepiece_train-browsermt PRIVATE ${PROTOBUF_LITE_LIBRARY} Threads::Threads)
+target_link_libraries(sentencepiece-browsermt PRIVATE proto ${PROTOBUF_LITE_LIBRARY} Threads::Threads)
+target_link_libraries(sentencepiece_train-browsermt PRIVATE proto ${PROTOBUF_LITE_LIBRARY} Threads::Threads)
+
+
 
 #==========
 
@@ -82,7 +83,7 @@ target_include_directories(sentencepiece_train-browsermt
         PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
         )
 
-install(TARGETS sentencepiece-browsermt sentencepiece_train-browsermt
+install(TARGETS proto sentencepiece-browsermt sentencepiece_train-browsermt
         EXPORT sentencepiece-browsermtTargets
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
@@ -91,10 +92,14 @@ install(TARGETS sentencepiece-browsermt sentencepiece_train-browsermt
         )
 
 install(FILES
-          include/sentencepiece-browsermt/sentencepiece_trainer.h
-          include/sentencepiece-browsermt/sentencepiece_processor.h
+        include/sentencepiece-browsermt/sentencepiece_trainer.h
+        include/sentencepiece-browsermt/sentencepiece_processor.h
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/sentencepiece-browsermt/)
 
+install(FILES
+        ${CMAKE_BINARY_DIR}/src/proto/sentencepiece.pb.h
+        ${CMAKE_BINARY_DIR}/src/proto/sentencepiece_model.pb.h
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/sentencepiece-browsermt/proto/)
 
 install(EXPORT sentencepiece-browsermtTargets
         FILE sentencepiece-browsermtTargets.cmake

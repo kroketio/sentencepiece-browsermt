@@ -16,7 +16,7 @@
 #define WORD_MODEL_H_
 
 #include "model_interface.h"
-#include "sentencepiece_model.pb.h"
+#include "proto/sentencepiece_model.pb.h"
 
 namespace sentencepiece {
 namespace word {
