@@ -20,7 +20,7 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 project(sentencepiece
-        VERSION 0.1.98
+        VERSION 0.2
         DESCRIPTION "Unsupervised text tokenizer and detokenizer for Neural Network-based text generation. Browsermt version."
         HOMEPAGE_URL https://github.com/kroketio/sentencepiece-browsermt
         LANGUAGES C CXX)

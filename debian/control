@@ -4,6 +4,7 @@ Priority: extra
 Maintainer: Sander <code@kroket.io>
 Build-Depends: debhelper (>= 10),
     cmake,
+    cpio,
     libprotobuf-dev,
     protobuf-compiler,
 Homepage: https://github.com/maemo-leste-extras/sentencepiece-browsermt

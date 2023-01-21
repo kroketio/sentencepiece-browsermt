@@ -73,14 +73,30 @@ target_link_libraries(sentencepiece_train-browsermt PRIVATE proto ${PROTOBUF_LIT
 
 target_include_directories(sentencepiece-browsermt
         PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>
         PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
         PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
         )
 
 target_include_directories(sentencepiece_train-browsermt
         PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>
         PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
         PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+        )
+
+# this COPY is necessary to satisfy the path for the following include:
+#      #include <sentencepiece-browsermt/proto/sentencepiece.pb.h>
+# (but its only relevant for vendored builds (-DVENDORED_LIBS=1))
+find_program(CPIO "cpio")
+IF(NOT CPIO)
+    message(FATAL_ERROR "missing program 'cpio' - install it")
+ENDIF()
+add_custom_command(TARGET sentencepiece-browsermt
+        PRE_BUILD
+        COMMAND bash -c "find '${ProtobufIncludePath}' -type f -printf '%P\\n' | grep -E 'h$|hpp$' | cpio -pvd '${CMAKE_CURRENT_BINARY_DIR}/include/sentencepiece-browsermt/proto/'"
+        WORKING_DIRECTORY ${ProtobufIncludePath}
+        VERBATIM
         )
 
 install(TARGETS proto sentencepiece-browsermt sentencepiece_train-browsermt
